@@ -44,7 +44,7 @@ def call(Map configMap){
                             echo test
                         """
                     }
-                }a
+                }
             }
             //Here you need to select scanner tool and send the analysis to server
             /* stage('Sonar Scan'){
