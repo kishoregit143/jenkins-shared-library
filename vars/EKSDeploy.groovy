@@ -27,9 +27,7 @@ pipeline {
     // This is build section
     stages {
         stage('Deploy') {
-            when{
-                    expression { deploy_to == "dev" || deploy_to = "qa" || deploy_to = "qa" }
-                }
+            
             steps {
                 script{
                     withAWS(region:'us-east-1',credentials:'aws-creds') {
