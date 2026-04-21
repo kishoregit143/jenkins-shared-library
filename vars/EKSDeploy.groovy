@@ -42,6 +42,14 @@ pipeline {
             }
         }
         
+        stage('Verify Deployment') {
+            steps {
+               sh """
+                  kubectl rollout status deployment/catalogue -n roboshop
+                  kubectl get pods -n roboshop
+               """
+    }
+}        
     }
     post{
         always{
