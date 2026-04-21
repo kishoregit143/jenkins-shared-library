@@ -9,7 +9,7 @@ pipeline {
     }
     environment {
         COURSE = "Jenkins"
-        appVersion = ""
+        appVersion = configMap.get("appVersion")
         ACC_ID = "307223751858"
         PROJECT = configMap.get ("project")
         COMPONENT = configMap.get ("component")
