@@ -46,6 +46,9 @@ pipeline {
             steps {
                sh """
                   kubectl get pods -n roboshop
+                  kubectl get pods -n roboshop | grep catalogue
+                  kubectl get deployment catalogue -n roboshop
+                  kubectl describe deployment catalogue -n roboshop
                """
     }
 }        
