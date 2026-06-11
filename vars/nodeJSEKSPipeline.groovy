@@ -63,10 +63,7 @@ def call(Map configMap){
         }  
         // Dependabot security gates vulnerabilities scan.
         stage('Dependabot Security Gate') {
-            when {
-
-                expression { false }
-            }
+            
             environment {
                 GITHUB_OWNER = 'kishoregit143'
                 GITHUB_REPO  = 'catalogue'
@@ -130,22 +127,22 @@ def call(Map configMap){
                 }
             }
         }
-          // we can scan images use trivy
-        //  stage('Trivy Scan'){
-        //     steps {
-        //         script{
-        //             sh """
-        //                 trivy image \
-        //                 --scanners vuln \
-        //                 --severity HIGH,CRITICAL,MEDIUM \
-        //                 --pkg-types os \
-        //                 --exit-code 1 \
-        //                 --format table \
-        //                 ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com/${PROJECT}/${COMPONENT}:${appVersion}
-        //             """
-        //         }
-        //     }
-        // }
+          we can scan images use trivy
+         stage('Trivy Scan'){
+            steps {
+                script{
+                    sh """
+                        trivy image \
+                        --scanners vuln \
+                        --severity HIGH,CRITICAL,MEDIUM \
+                        --pkg-types os \
+                        --exit-code 1 \
+                        --format table \
+                        ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com/${PROJECT}/${COMPONENT}:${appVersion}
+                    """
+                }
+            }
+        }
     }
 
     post{
