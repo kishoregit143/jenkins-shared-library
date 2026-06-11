@@ -127,7 +127,7 @@ def call(Map configMap){
                 }
             }
         }
-          we can scan images use trivy
+        //we can scan images use trivy
          stage('Trivy Scan'){
             steps {
                 script{
